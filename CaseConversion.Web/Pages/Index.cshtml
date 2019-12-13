@@ -1,0 +1,53 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Case Conversion";
+}
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+<div class="text-center">
+    <h3 class="display-6">Case Conversion API Web Demo</h3>
+
+    <p><b>Built with ASP.NET Core version @Model.config.version</b></p>
+
+    <p><b>API Server host:</b>&nbsp;&nbsp;<input readonly type=text style="border:hidden;width:100px;padding:0px" asp-for="config.hostPort" /></p>
+    <p><b>Local IP address:</b>&nbsp;&nbsp;&nbsp;<input readonly type=text style="border:hidden;width:100px" asp-for="LocalIPAddress" /></p>
+    <p><b>Remote client address:</b>&nbsp;&nbsp;&nbsp;<input readonly type=text style="border:hidden" value="@HttpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString()" /></p>
+    <br /><br /><br />
+                <center>
+                    <form method="post" style="background-color:#fafafa;padding:10px;border:1px solid #e0e0e0;width:750px;">
+                        <div class="form-row">
+                            <div class="col-md-8 mb-1">
+
+                                <label for="sentence" class="sr-only">Input</label>
+                                <input type="text" id="sentence" name="sentence" maxlength="400" asp-for="ConvertRequest.Sentence" class="form-control" />
+                            </div>
+                            <div class="col-md-2 mb-1">
+                                <select id="caseType" name="caseType" asp-for="ConvertRequest.CaseType" class="form-control">
+                                    <option selected>upper</option>
+                                    <option>lower</option>
+                                    <option>camel</option>
+                                    <option>pascal</option>
+                                    <option>kebab</option>
+                                    <option>snake</option>
+                                    <option>leet</option>
+                                    <option>fatorial</option>
+                                </select>
+
+                            </div>
+                            <div class="col-md-1 mb-1">
+                                <input type="submit" id="Convert" name="Convert" value="Convert" class="btn btn-primary mb-2" />
+                            </div>
+                        </div>
+                    </form>
+                    <br/><br/>
+
+                    <div class="input-group" style="width:750px">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Output</span>
+                        </div>
+                        <textarea readonly id="output" name="output" asp-for="ConvertResponse.Output" class="form-control" aria-label="output"></textarea>
+                    </div>
+
+                </center>
+</div>

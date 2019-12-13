@@ -1,0 +1,4 @@
+C:\Devel\projects\CaseConversionPod\CaseConversion.Web\obj\Debug\netcoreapp3.0\CaseConversion.Web.csprojAssemblyReference.cache
+C:\Devel\projects\CaseConversionPod\CaseConversion.Web\obj\Debug\netcoreapp3.0\CaseConversion.Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Devel\projects\CaseConversionPod\CaseConversion.Web\obj\Debug\netcoreapp3.0\CaseConversion.Web.AssemblyInfoInputs.cache
+C:\Devel\projects\CaseConversionPod\CaseConversion.Web\obj\Debug\netcoreapp3.0\CaseConversion.Web.AssemblyInfo.cs

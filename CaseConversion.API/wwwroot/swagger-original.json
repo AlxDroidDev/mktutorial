@@ -1,0 +1,114 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a simple API that is meant to be used only as an example",
+    "version": "1.0",
+    "title": "Case Conversion API",
+    "contact": {
+      "email": "you@your-company.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "virtserver.swaggerhub.com",
+  "basePath": "/api/v1/CaseConversion",
+  "schemes": [ "http" ],
+  "paths": {
+    "/convert": {
+      "post": {
+        "summary": "converts the input sentence to the case type specified",
+        "description": "converts the input sentence to the case type specified",
+        "operationId": "ConvertCase",
+        "consumes": [ "application/json" ],
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "description": "the sentence to be converted and conversion type",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ConvertRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "item created",
+            "schema": {
+              "$ref": "#/definitions/ConvertResponse"
+            }
+          },
+          "400": {
+            "description": "invalid input"
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "consumes": [],
+        "produces": [ "text/plain" ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Health check",
+            "schema": {
+              "type": "string",
+              "example": "OK"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CaseType": {
+      "type": "string",
+      "description": "Type of convertion to be applied to the input sentence",
+      "example": "camel",
+      "enum": [ "lower", "upper", "camel", "pascal", "snake", "kebab", "leet" ]
+    },
+    "ConvertRequest": {
+      "type": "object",
+      "required": [ "caseType", "sentence" ],
+      "properties": {
+        "caseType": {
+          "type": "string",
+          "example": "camel",
+          "description": "Type of convertion to be applied to the input sentence",
+          "enum": [ "lower", "upper", "camel", "pascal", "snake", "kebab" ]
+        },
+        "sentence": {
+          "type": "string",
+          "example": "pleASE conVert ME To a CAMEL CASE string",
+          "description": "string/sentence to which the selected case conversion will be applied"
+        }
+      }
+    },
+    "ConvertResponse": {
+      "type": "object",
+      "required": [ "caseType", "input", "output" ],
+      "properties": {
+        "caseType": {
+          "type": "string",
+          "example": "camel",
+          "description": "Type of convertion to be applied to the input sentence",
+          "enum": [ "lower", "upper", "camel", "pascal", "snake", "kebab" ]
+        },
+        "input": {
+          "type": "string",
+          "example": "pleASE conVert ME To a CAMEL CASE string",
+          "description": "string/sentence to which the selected case conversion will be applied"
+        },
+        "output": {
+          "type": "string",
+          "example": "pleaseConvertMeToACamelCaseString",
+          "description": "string/sentence with the selected case conversion applied"
+        }
+      }
+    }
+  }
+}

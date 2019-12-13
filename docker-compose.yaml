@@ -1,0 +1,30 @@
+version: "3.7"
+services:
+  api:
+    image: simonettidti/caseconversionapi:latest
+    build:
+      context: ./CaseConversion.API
+    ports:
+      - "81:81"      
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+  web:
+    image: simonettidti/caseconversionweb:latest
+    build:
+      context: ./CaseConversion.Web
+    ports:
+      - "80:80"      
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - api
