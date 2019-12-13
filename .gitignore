@@ -1,0 +1,5 @@
+buildCointainers.bat
+.swagger-codegen
+.vs
+.vscode
+bin
